@@ -3,10 +3,10 @@ var searchCityEl = document.querySelector("#city-search");
 var searchButton = document.querySelector("#searchbtn");
 var citySearchEl= document.querySelector("#searched-city")
 var weatherContainer = document.querySelector("#weather-container");
-var cityForecast = document.querySelector("#forecast");
+var forecastDisplay = document.querySelector("#forecast");
 var APIKey = 'dd81a6b7086f366060794f2af941e0e8';
 var currentDay = moment().format('l');
-var fiveDayContainer = document.querySelector("container-five-forecast")
+var fiveDayContainer = document.querySelector("#container-five-forecast")
 
 
 function searchSubmit(event) {
@@ -19,6 +19,7 @@ function searchSubmit(event) {
         return;
     }
     getWeather(city);
+    fetchFiveDay(city);
 }
 
 function getWeather(city) {
@@ -99,13 +100,62 @@ function showUvIndex(index){
     };
     uvIndex.appendChild(indexValue);
     weatherContainer.appendChild(uvIndex);
+};
+
+function fetchFiveDay(city){
+    var apiKey = "dd81a6b7086f366060794f2af941e0e8"
+    var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+            showFiveDay(data);
+            console.log(data);
+        })
+    })
+};
+
+function showFiveDay(weather){
+    fiveDayContainer.textContent = "";
+    forecastDisplay.textContent = "5-Day Forecast:";
+    var forecastCurrent = weather.list;
+    console.log(forecastCurrent);
+    for(var i = 1; i < forecastCurrent.length; i=i+8){
+        var dayForecast = forecastCurrent[i];
+
+        
+        var forecastEL = document.createElement("div");
+        forecastEL.classList = "card bg-primary text-light m-2";
+        var currentForecastDate = document.createElement("h4")
+        currentForecastDate.textContent = moment(dayForecast.dt).format("l");
+        currentForecastDate.classList = "card-header text-center"
+        forecastEL.appendChild(currentForecastDate);
+
+        var weatherIcon = document.createElement("img")
+        weatherIcon.classList = "card-body text-center"
+        weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${dayForecast.weather[0].icon}@2x.png`);
+        forecastEL.appendChild(weatherIcon);
+
+        var forecastTemp = document.createElement("span");
+        forecastTemp.textContent = "Temp: " + dayForecast.main.temp + "°F";
+        forecastTemp.classList = "card-body text-center"
+        forecastEL.appendChild(forecastTemp);
+
+        var forecastHumidity = document.createElement("span");
+        forecastHumidity.textContent = "Humidity: " + dayForecast.main.humidity + "%";
+        forecastHumidity.classList = "card-body text-center"
+        forecastEL.appendChild(forecastHumidity);
+
+ 
+        var forecastWind = document.createElement("span");
+        forecastWind.textContent = "Wind: " + dayForecast.wind.speed + " mph";
+        forecastWind.classList = "card-body text-center"
+        forecastEL.appendChild(forecastWind);
+
+        fiveDayContainer.appendChild(forecastEL);
+    }
 }
 
-
-
-
-    //Icon URL  "http://openweathermap.org/img/wn/" + iconUrl + "@2x.png";
-    https://openweathermap.org/weather-conditions#How-to-get-icon-URL
+   
     
      
 
