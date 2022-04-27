@@ -11,66 +11,33 @@
 <body>
   <header><b>Weather Dashboard</b></header>
   <main class="flex-row justify-space-between">
-    <div clas="container">
+    <div clas="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <div class="card">
-                <h3 class="card-header text-uppercase">Search for a City:</h3>
-                <form id="user-form" class="card-body">
+                <h3 class="card-header">Search for a City:</h3>
+                <form id="city-form" class="card-body">
                 <input name="City" id="city-search" type="text" class="form-input" />
-                <button type="submit" id="searchbtn" class="btn btn-info" type="button">Search</button>
+                <button type="submit" id="searchbtn" class="btn btn-primary" type="button">Search</button>
                 </form>
+                <div class="past-cities border" id="past-search-buttons"></div>
                 </div>
             </div>
-            <div class="col-md-8" id="city-display">
-            <h3 class="header-city">This will be the searched City</h3>
-            </div>
-            <div class="row">
-              <div class="col-md-">
-                <div class="card text-white bg-secondary mb-3" style="max-width: 15rem;">
-                    <div class="card-header">Header1</div>
-                    <div class="card-body">
-                      <h5 class="card-title">Secondary card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
+            <div class="col-12 col-md-9">
+                <div class="row border city-select" id="forecast">
+                  <div class = "col-12">
+                    <h2 id="searched-city"></h2>
+                    <div id="weather-container" class="list-item"></div>
                   </div>
-              </div>
-            </div>
-              <div class="col"></div>
-              <div class="card text-white bg-secondary mb-3" style="max-width: 15rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Secondary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-              </div>
-              <div class="col"></div>
-              <div class="card text-white bg-secondary mb-3" style="max-width: 15rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Secondary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="row border" id="five-day-forecast">
+                  <h2 class="col-12" id="forecast-day"></h2>
+                  <div class="d-flex" id="container-five-forecast"></div>
                 </div>
-              </div>
-              <div class="col"></div>
-              <div class="card text-white bg-secondary mb-3" style="max-width: 15rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Secondary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="col"></div>
-              <div class="card text-white bg-secondary mb-3" style="max-width: 15rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h5 class="card-title">Secondary card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
             </div>
         </div>
     </div>
+  </main>
       
  
   
@@ -80,9 +47,8 @@
   
   
   
-  
-  
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>  
 </body>

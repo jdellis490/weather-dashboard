@@ -1,10 +1,5 @@
 :root {
-    --primary: #ccdad1;
-    --secondary: #9caea9;
-    --tertiary: #788585;
-    --light-dark: #6f6866;
-    --dark: #38302e;
-    --border-radius: 0.3rem;
+    --card-color:#006E7F;
   }
   
   * {
@@ -27,4 +22,32 @@
       font-family: Arial, Helvetica, sans-serif;
       background-color: white;
       line-height: 1.5em;
+  }
+
+  .forecast-card{
+    width: 7rem;
+    background-color: var(--card-color);
+    color: white;
+    text-align: center;
+  }
+  .card-body{
+    flex: auto;
+  }
+
+  span.favorable{
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+  }
+
+  span.moderate{
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+  }
+
+  span.severe{
+    background-color: red;
+    border-radius: 5px;
+    color: white;
   }
