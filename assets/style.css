@@ -24,12 +24,6 @@
       line-height: 1.5em;
   }
 
-  .forecast-card{
-    width: 7rem;
-    background-color: var(--card-color);
-    color: white;
-    text-align: center;
-  }
   .card-body{
     flex: auto;
   }

@@ -124,7 +124,7 @@ function showFiveDay(weather){
 
         
         var forecastEL = document.createElement("div");
-        forecastEL.classList = "card bg-primary text-light m-2";
+        forecastEL.classList = "card bg-secondary text-light m-2";
         var currentForecastDate = document.createElement("h4")
         currentForecastDate.textContent = moment(dayForecast.dt).format("l");
         currentForecastDate.classList = "card-header text-center"
