@@ -6,7 +6,9 @@ var weatherContainer = document.querySelector("#weather-container");
 var forecastDisplay = document.querySelector("#forecast");
 var APIKey = 'dd81a6b7086f366060794f2af941e0e8';
 var currentDay = moment().format('l');
-var fiveDayContainer = document.querySelector("#container-five-forecast")
+var fiveDayContainer = document.querySelector("#container-five-forecast");
+var historySearchButton = document.querySelector("#search-history-buttons");
+var allCities =[];
 
 
 function searchSubmit(event) {
@@ -20,7 +22,10 @@ function searchSubmit(event) {
     }
     getWeather(city);
     fetchFiveDay(city);
+    savedCities();
+    cityHistory(city);
 }
+
 
 function getWeather(city) {
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
@@ -119,14 +124,14 @@ function showFiveDay(weather){
     forecastDisplay.textContent = "5-Day Forecast:";
     var forecastCurrent = weather.list;
     console.log(forecastCurrent);
-    for(var i = 1; i < forecastCurrent.length; i=i+8){
+    for(var i = 5; i < forecastCurrent.length; i=i+8){
         var dayForecast = forecastCurrent[i];
 
         
         var forecastEL = document.createElement("div");
-        forecastEL.classList = "card bg-secondary text-light m-2";
+        forecastEL.classList = "card bg-primary text-light m-2";
         var currentForecastDate = document.createElement("h4")
-        currentForecastDate.textContent = moment(dayForecast.dt).format("l");
+        currentForecastDate.textContent = moment.unix(dayForecast.dt).format("l");
         currentForecastDate.classList = "card-header text-center"
         forecastEL.appendChild(currentForecastDate);
 
@@ -155,18 +160,29 @@ function showFiveDay(weather){
     }
 }
 
+function savedCities(){
+    localStorage.setItem("cities", JSON.stringify(allCities));
+}
+
+function cityHistory(cityHistory){
+    historySearchEL = document.createElement("button");
+    historySearchEL.textContent = cityHistory;
+    historySearchEL.classList = " d-flex w-100 btn-outline-primary border p-2";
+    historySearchEL.setAttribute("city-data", cityHistory)
+    historySearchEL.setAttribute("type", "submit");
+    historySearchButton.prepend(historySearchEL);
+}
+
+function historySubmit(event){
+    var city = event.target.getAttribute("city-data")
+    if(city){
+        getWeather(city);
+        fetchFiveDay(city);
+    }
+}
+
    
     
      
-
-
-
-
-
-
-
-
-
-
-
-searchButton.addEventListener("click", searchSubmit)
+searchButton.addEventListener("click", searchSubmit);
+historySearchButton.addEventListener("click", historySubmit);
