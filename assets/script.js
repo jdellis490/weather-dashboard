@@ -127,7 +127,8 @@ function showFiveDay(weather){
     fiveDayContainer.textContent = "";
     forecastDisplay.textContent = "5-Day Forecast:";
     var forecastCurrent = weather.list;
-    for(var i = 5; i < forecastCurrent.length; i=i+8){
+    //Got forecast temp data from 3pm each day in loop
+    for(var i = 4; i < forecastCurrent.length; i=i+8){
         var dayForecast = forecastCurrent[i];
 
         var forecastEL = document.createElement("div");
