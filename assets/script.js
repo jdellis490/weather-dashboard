@@ -27,7 +27,7 @@ function searchSubmit(event) {
 
 // Gets data from fetch URL for the current City Weather
 function getWeather(city) {
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     fetch(queryURL)
         .then(function(response) {
             console.log(response);
