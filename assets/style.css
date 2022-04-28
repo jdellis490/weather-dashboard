@@ -9,7 +9,8 @@
   header{
       font-size: 50px;
       font-weight: 500;
-      background-color: grey;
+      background: rgb(0,0,255);
+      background: linear-gradient(90deg, rgba(0,0,255,1) 0%, rgba(150,152,157,1) 81%);
       color: white;
       padding: 20px;
       text-align: center;
