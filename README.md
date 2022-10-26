@@ -7,7 +7,7 @@ The motivaiton behind this project was to improve my use of APIs and fetch reque
 ## Usage
 
 To use, simply copy this URL into the preferred browser: 
-https://jdellis490.github.io/Weather-Dashboard-HW6/
+https://jdellis490.github.io/weather-dashboard/
 
 This is what it looks like with cities that have been searched:
 
